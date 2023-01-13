@@ -1,4 +1,4 @@
-# Conway-Game-of-Life
+# Conway's-Game-of-Life
 This is a React-based implementation of John Horton Conway's Game of Life, a classic cellular automaton simulation.
 
 ## Features 
