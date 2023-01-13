@@ -2,8 +2,8 @@ import './App.css';
 import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
 import {information as information} from './information';
-const numRows = 100;
-const numCols = 100;
+const numRows = 130;
+const numCols = 130;
 const glider = [
   [0, 1, 0],
   [0, 0, 1],
@@ -59,14 +59,13 @@ const gosperGliderGun =
 const rpentomino = [[0, 1, 1],
 [1, 1, 0],
 [0, 1, 0]]
-const queenBeeSpaceShip = [[0, 1, 1, 0, 0, 0, 0, 0],
-[1, 0, 0, 1, 0, 0, 0, 0],
-[0, 1, 0, 1, 0, 0, 0, 0],
-[0, 0, 1, 1, 0, 0, 0, 0],
-[0, 0, 0, 0, 1, 1, 0, 0],
-[0, 0, 0, 0, 1, 1, 0, 0],
-[0, 0, 0, 0, 0, 0, 1, 1],
-[0, 0, 0, 0, 0, 0, 1, 1]]
+const queenBeeSpaceShip = [
+  [1,0,0,0],
+  [1,0,0,0],
+  [1,0,0,0],
+  [0,1,1,1],
+  [0,1,1,0]
+]
 
 const blockLayingSwitchEngine = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
@@ -98,10 +97,13 @@ const generateEmptyGrid = () => {
 export default function App() {
 
   const[inf, setInf] = useState(information[0]);
-
+  const[showGrid, setShowGrid] = useState(false);
+  const borderValue = showGrid ? "solid white 0.1px" : "none";
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid();
   });
+
+
   const handleGeneration = (pattern, i) => {
     const newGrid = produce(grid, gridCopy => {
       for (let i = 0; i < pattern.length; i++) {
@@ -167,6 +169,7 @@ export default function App() {
         <button onClick={() => {
           setRunning(!running);
           if (!running) {
+            setInf(information[1]);
             runningRef.current = true;
             runSimulation();
           }
@@ -178,46 +181,44 @@ export default function App() {
         }}>
           random-setup
         </button>
+        <button onClick={() => setShowGrid(!showGrid)}>
+          Grid
+        </button>
         <button onClick={() => {
           setGrid(generateEmptyGrid())
         }}>
           clear
         </button>
-        <button onClick={() => handleGeneration(glider,0)}>
+        <button onClick={() => handleGeneration(glider,2)}>
           glider
         </button>
-        <button onClick={() => handleGeneration(rpentomino,1)}>
+        <button onClick={() => handleGeneration(rpentomino,3)}>
         R-pentomino
         </button>
-        <button onClick={() => handleGeneration(queenBeeSpaceShip,2)}>
+        <button onClick={() => handleGeneration(queenBeeSpaceShip,4)}>
           Queen Bee SpaceShip
         </button>
-        <button onClick={() => handleGeneration(gosperGliderGun,3)}>
+        <button onClick={() => handleGeneration(gosperGliderGun,5)}>
           Gosper Glider Gun
         </button>
-        <button onClick={() => handleGeneration(acorn,4)}>
+        <button onClick={() => handleGeneration(acorn,6)}>
         acorn
         </button>
-        <button onClick={() => handleGeneration(pulsar,5)}>
+        <button onClick={() => handleGeneration(pulsar,7)}>
         pulsar
         </button>
-        <button onClick={() => handleGeneration(beacon,6)}>
+        <button onClick={() => handleGeneration(beacon,8)}>
         beacon
         </button>
-        <button onClick={() => handleGeneration(blinker,7)}>
+        <button onClick={() => handleGeneration(blinker,9)}>
         blinker
         </button>
-        <button onClick={() => handleGeneration(toad,8)}>
+        <button onClick={() => handleGeneration(toad,10)}>
         toad
         </button>
-        <button onClick={() => handleGeneration(blockLayingSwitchEngine,9)}>
+        <button onClick={() => handleGeneration(blockLayingSwitchEngine,11)}>
         block laying switch engine
         </button>
-        
-        
-        
-        
-        
       </div>
 
       <div style={{
@@ -238,7 +239,7 @@ export default function App() {
                 width: "5px",
                 height: "5px",
                 backgroundColor: grid[i][k] !== 0 ? 'white' : undefined,
-
+                border: `${borderValue}`
               }}
             />))}
       </div>
