@@ -126,7 +126,10 @@ Block Laying Switch Engine
     The BLSE can be used to illustrate the concept of "complexity" and "constructability" in the Game of Life, as it creates a complex pattern that can build and destroy blocks. It also highlights the idea of unpredictability, as the pattern can switch between different configurations in an unexpected way. Additionally, the BLSE has been used to explore the concept of universality, as it can be created in a variety of different initial conditions and rules, and the behavior of the BLSE is consistent across those different conditions.
 </p>
 </>
+const lineFractal = <>
+    
 
+</>
 
 export const information = [
     gameoflife, gol, glider, rpentomonio, queenbeespaceship, gosperglidergun ,acorn ,pulsar ,beacon , blinker, toad, blocklayingswitchengine

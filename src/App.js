@@ -24,6 +24,7 @@ const toad = [
   [0, 1, 1, 1],
   [1, 1, 1, 0],
 ]
+const lineFractal = Array(numCols).fill(1)
 const pulsar = [
   [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -194,6 +195,9 @@ export default function App() {
         </button>
         <button onClick={() => handleGeneration(rpentomino,3)}>
         R-pentomino
+        </button>
+        <button onClick={() => handleGeneration(lineFractal,12)}>
+        line-Fractal
         </button>
         <button onClick={() => handleGeneration(queenBeeSpaceShip,4)}>
           Queen Bee SpaceShip
